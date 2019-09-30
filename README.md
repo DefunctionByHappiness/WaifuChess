@@ -11,8 +11,18 @@
 
 Core: 
 - Python3.7.4 https://www.python.org/downloads/
-- six https://pypi.org/project/six/
-- pyglet https://pypi.org/project/pyglet/
+- six (https://pypi.org/project/six/)
+    ```python
+    pip install six
+    ```
+- pyglet (https://pypi.org/project/pyglet/)
+    ```python
+    pip install pyglet
+    ```
+- cocos2d (http://python.cocos2d.org)
+    ```python
+    pip install cocos2d
+    ```
 
 Particles Support:
 - www.numpy.org
