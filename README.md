@@ -5,3 +5,20 @@
 ![alt text](https://www.ichess.es/wp-content/uploads/2016/02/wood-chess-pieces-board-box-combo-1.jpg "Ke es ajedres")
 #### Buscamos inversores
 ### ---> [Dinero aqui](https://paypal.me/pools/c/8iGjmLftiJ) <---
+
+
+## Instalation:
+
+Core: 
+- Python3.7.4 https://www.python.org/downloads/
+- six https://pypi.org/project/six/
+- pyglet https://pypi.org/project/pyglet/
+
+Particles Support:
+- www.numpy.org
+
+Audio and Video Support:
+- http://avbin.github.io/AVbin/Home/Home.html
+
+Audiosupport:
+- http://www.pygame.org/
