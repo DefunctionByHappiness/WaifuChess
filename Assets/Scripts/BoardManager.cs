@@ -13,38 +13,33 @@ public class BoardManager : MonoBehaviour
     public GameObject whiteTiles;
     public GameObject blackTiles;
 
-    void InitializeList() {
+    void BoardSetup() {
+        boardHolder = new GameObject("Board").transform;
         gridPositions.Clear();
+
+        bool white = false;
 
         for (int x = 0; x < rows; x++)
         {
             for (int y = 0; y < columns; y++)
-            {   
-                gridPositions.Add(new Vector3(x, y, 0f));
-            }
-        }
-    }
-
-    void BoardSetup() {
-        boardHolder = new GameObject("Board").transform;
-
-        for (int x = -1; x < rows + 1; x++)
-        {
-            for (int y = -1; y < columns + 1; y++)
             {
-                /*
-                GameObject toInstantiate  = floorTiles[Random.Range(0, floorTiles.Length)];
-                if(x == -1 || x == rows || y == -1 || y == columns) 
-                    toInstantiate = outerWallTiles[Random.Range (0, outerWallTiles.Length)];
-                GameObject instance = Instantiate(toInstantiate, new Vector3 (x, y, 0f), Quaternion.identity) as GameObject;
+                GameObject toInstantiate;
+                if (white) {
+                    toInstantiate = whiteTiles;
+                } else {
+                    toInstantiate = blackTiles;
+                }
+                gridPositions.Add(new Vector3(x, y, 0f));
+                GameObject instance = Instantiate(toInstantiate, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
                 instance.transform.SetParent(boardHolder);   
-                */   
+                white = !white;
+
             }
+            white = !white;
         }
     }
 
     public void SetupScene(){
         BoardSetup();
-        InitializeList();
     }
 }
