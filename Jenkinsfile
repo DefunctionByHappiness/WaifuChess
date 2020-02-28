@@ -3,14 +3,12 @@ pipeline {
   stages {
     stage('Deploy') {
       steps {
-        sh '''ssh jarodieg@jarodieg.top <<EOF
- cd ~/WaifuChess/build/WaifuChess
- git checkout dev
- git pull
- cd ..
- pm2 restart waifuchess
- exit
-EOF'''
+        sh '''cd ~/WaifuChess/build/WaifuChess
+git checkout dev
+git pull
+cd ..
+pm2 restart waifuchess
+'''
       }
     }
 
