@@ -7,7 +7,7 @@ pipeline {
 id -un
 git pull
 cd ..
-pm2 -u jarodieg restart MurianBot
+pm2 restart MurianBot -u jarodieg 
 '''
       }
     }
