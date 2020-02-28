@@ -3,12 +3,12 @@ pipeline {
   stages {
     stage('Deploy') {
       steps {
-        sh '''cd /home/jarodieg/WaifuChess/build/WaifuChess
-id -un
+        sh '''sudo su jarodieg
+cd ~/WaifuChess/build/WaifuChess
 git pull
 cd ..
-pm2 restart MurianBot -u jarodieg --hp /home/jarodieg
-'''
+pm2 restart MurianBot
+exit'''
       }
     }
 
