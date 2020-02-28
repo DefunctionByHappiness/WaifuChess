@@ -3,8 +3,7 @@ pipeline {
   stages {
     stage('Deploy') {
       steps {
-        sshPublisher()
-        sh 'npm install'
+        sshPublisher(masterNodeName: 'Test', failOnError: true)
       }
     }
 
