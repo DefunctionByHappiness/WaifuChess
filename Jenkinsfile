@@ -4,7 +4,7 @@ pipeline {
     stage('Deploy') {
       steps {
         sh '''sudo su jarodieg
-id -u
+id -un
 cd ~/WaifuChess/build/WaifuChess
 git pull
 cd ..
