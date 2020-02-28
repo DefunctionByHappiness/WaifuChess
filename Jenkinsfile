@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Deploy') {
       steps {
-        sh '''ssh jarodieg@jarodieg.top -p ${SSH_PASS} <<EOF
+        sh '''ssh jarodieg@jarodieg.top <<EOF
  cd ~/WaifuChess/build/WaifuChess
  git checkout dev
  git pull
