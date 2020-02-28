@@ -7,7 +7,7 @@ pipeline {
 id -un
 git pull
 cd ..
-pm2 restart waifuchess
+pm2 restart MurianBot
 '''
       }
     }
