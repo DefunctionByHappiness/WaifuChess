@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Deploy') {
+    stage('Deploy Code') {
       steps {
         sh '''sudo su jarodieg <<EOF
  id -un
@@ -11,6 +11,18 @@ pipeline {
  pm2 restart MurianBot
  exit
 EOF'''
+      }
+    }
+
+    stage('Build Unity WebGL') {
+      steps {
+        sh 'echo'
+      }
+    }
+
+    stage('Clean') {
+      steps {
+        sh 'echo'
       }
     }
 
