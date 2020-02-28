@@ -7,7 +7,7 @@ pipeline {
 id -un
 cd ~/WaifuChess/build/WaifuChess
 git pull
-cd ..
+cd ~/
 pm2 restart MurianBot
 exitEOF'''
       }
