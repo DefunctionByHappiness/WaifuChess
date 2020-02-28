@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Deploy') {
       steps {
-        sh '''cd ~/WaifuChess/build/WaifuChess
+        sh '''cd /home/jarodieg/WaifuChess/build/WaifuChess
 git checkout dev
 git pull
 cd ..
