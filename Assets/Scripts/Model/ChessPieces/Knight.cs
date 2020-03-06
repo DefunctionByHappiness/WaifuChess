@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Knight : ChessMan
 {
-    public Knight(int col, int row, int player){
-        base(col, row, player);
+    public Knight(int col, int row, int player) : base(col, row, player){
+
     }
 
     // Start is called before the first frame update
@@ -20,9 +20,9 @@ public class Knight : ChessMan
         
     }
 
-    public override ArrayList<Square> validMovements() {
-
-        return ArrayList<Square> List;
+    public override List<Square> validMovements() {
+        List<Square> list = new List<Square>();
+        return list;
     }
 
 }

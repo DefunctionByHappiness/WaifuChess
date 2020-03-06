@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Square {
 
     public class Square : MonoBehaviour
     {
@@ -14,4 +13,4 @@ namespace Square {
             this.row = row;
         }
     }
-}
+

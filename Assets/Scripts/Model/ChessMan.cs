@@ -4,40 +4,41 @@ using UnityEngine;
 
 public class ChessMan : Piece
 {
-    ChessMan chessmanType;
-    public ChessMan(int col, int row, int player){
-        base(col, row, player);
+    public ChessMan(int col, int row, int player) : base(col, row, player){
+       
+    }
+/*
+    public int getCol(){
+        return base.getCol();
     }
 
-    public getCol(){
-        base.getCol();
+    public int getRow(){
+        return base.getRow();
     }
 
-    public getRow(){
-        base.getRow();
-    }
-
-    public getPlayer(){
-        base.getPlayer();
+    public int getPlayer(){
+        return base.getPlayer();
     }
 
     public ChessMan getChessmanType(){
-        this.chessmanType;
+        return this.chessmanType;
     }
-
+*/
     public override bool moveInsideLimits(int col, int row) {
 
         return true;
     }
 
     // Implement in each ChessMan
-    public override ArrayList<Square> validMovements() {
-
-        return ArrayList<Square> List;
+    
+    public override List<Square> validMovements() {
+        List<Square> list = new List<Square>();
+        return list;
     }
+    
 
     public bool canMove(int col, int row){
-
+        return true;
     }
 
     protected void visitableSquares() {

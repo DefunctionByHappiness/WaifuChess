@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using Square;
-
 public abstract class Piece : MonoBehaviour
 {
     int row;
@@ -30,9 +28,9 @@ public abstract class Piece : MonoBehaviour
 
     public abstract bool moveInsideLimits(int col, int row);
 
-    public abstract ArrayList<Square> validMovements();
+    public abstract List<Square> validMovements();
 
-    public move(int col, int row) {
+    public void move(int col, int row) {
         this.col = col;
         this.row = row;
     }
