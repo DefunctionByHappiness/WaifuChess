@@ -20,9 +20,6 @@ public class ChessMan : Piece
         return base.getPlayer();
     }
 
-    public ChessMan getChessmanType(){
-        return this.chessmanType;
-    }
 */
     public override bool moveInsideLimits(int col, int row) {
 
@@ -36,9 +33,9 @@ public class ChessMan : Piece
         return list;
     }
     
-
-    public bool canMove(int col, int row){
-        return true;
+    // Check if the square is empty, and returns 0 if empty, 1 if player 1 Chessman or 2 if player 2 Chessman.
+    public int isEmptySquare(int col, int row){
+        return 1;
     }
 
     protected void visitableSquares() {
