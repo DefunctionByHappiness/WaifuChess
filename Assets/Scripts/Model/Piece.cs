@@ -4,34 +4,34 @@ using UnityEngine;
 
 public abstract class Piece : MonoBehaviour
 {
-    int row;
-    int col;
-    int player;
+    private int playerNum;
 
-    public Piece(int row, int col, int player){
-        this.row = row;
-        this.col = col;
-        this.player = player;
+    public Piece(){
+
     }
 
-    public int getCol(){
-        return this.col;
+    public float getCol(){
+        return gameObject.transform.position.y;
     }
 
-    public int getRow(){
-        return this.row;
+    public float getRow(){
+        return gameObject.transform.position.x;
     }
 
     public int getPlayer(){
-        return this.player;
+        return this.playerNum;
     }
 
-    public abstract bool moveInsideLimits(int col, int row);
+    public abstract bool moveInsideLimits(float col, float row);
 
     public abstract List<Square> validMovements();
 
-    public void move(int col, int row) {
-        this.col = col;
-        this.row = row;
+    public void move(float col, float row) {
+        gameObject.transform.position = new Vector3(col, row, -1.0f);
     }
+
+    public void setPlayer(int player) {
+        this.playerNum = player;
+    }
+
 }

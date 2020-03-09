@@ -11,6 +11,8 @@ public class BoardManager : MonoBehaviour
     private Transform piecesHolder;
     private List<Vector3> gridPositions = new List<Vector3>();
 
+    private List<GameObject> piecesList = new List<GameObject>();
+
     public GameObject whiteTiles;
     public GameObject blackTiles;
 
@@ -48,7 +50,7 @@ public class BoardManager : MonoBehaviour
                 }
                 gridPositions.Add(new Vector3(x, y, 0f));
                 GameObject instance = Instantiate(toInstantiate, new Vector3(x, y, 0f), Quaternion.identity) as GameObject;
-                instance.transform.SetParent(boardHolder);   
+                instance.transform.SetParent(boardHolder);
                 white = !white;
 
             }
@@ -65,102 +67,131 @@ public class BoardManager : MonoBehaviour
             GameObject toInstatiateWhite = whitePawn;
             GameObject instance = Instantiate(toInstatiateWhite, new Vector3(y, 1, -1f), Quaternion.identity) as GameObject;
             instance.transform.SetParent(piecesHolder);
+            piecesList.Add(instance);
 
             GameObject toInstatiateBlack = blackPawn;
             instance = Instantiate(toInstatiateBlack, new Vector3(y, 6, -1f), Quaternion.identity) as GameObject;
             instance.transform.SetParent(piecesHolder);
+            piecesList.Add(instance);
 
             switch (y)
             {
-                case 0:                    
+                case 0:
                     toInstatiateWhite = whiteRook;
                     instance = Instantiate(toInstatiateWhite, new Vector3(y, 0, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     toInstatiateBlack = blackRook;
                     instance = Instantiate(toInstatiateBlack, new Vector3(y, 7, -1f), Quaternion.identity) as GameObject;
-                    instance.transform.SetParent(piecesHolder);        
+                    instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     break;
                 case 1:
                     toInstatiateWhite = whiteKnight;
                     instance = Instantiate(toInstatiateWhite, new Vector3(y, 0, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     toInstatiateBlack = blackKnight;
                     instance = Instantiate(toInstatiateBlack, new Vector3(y, 7, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     break;
                 case 2:
                     toInstatiateWhite = whiteBishop;
                     instance = Instantiate(toInstatiateWhite, new Vector3(y, 0, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     toInstatiateBlack = blackBishop;
                     instance = Instantiate(toInstatiateBlack, new Vector3(y, 7, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     break;
                 case 3:
                     toInstatiateWhite = whiteQueen;
                     instance = Instantiate(toInstatiateWhite, new Vector3(y, 0, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     toInstatiateBlack = blackQueen;
                     instance = Instantiate(toInstatiateBlack, new Vector3(y, 7, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     break;
                 case 4:
                     toInstatiateWhite = whiteKing;
                     instance = Instantiate(toInstatiateWhite, new Vector3(y, 0, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     toInstatiateBlack = blackKing;
                     instance = Instantiate(toInstatiateBlack, new Vector3(y, 7, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     break;
                 case 5:
                     toInstatiateWhite = whiteBishop;
                     instance = Instantiate(toInstatiateWhite, new Vector3(y, 0, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     toInstatiateBlack = blackBishop;
                     instance = Instantiate(toInstatiateBlack, new Vector3(y, 7, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     break;
                 case 6:
                     toInstatiateWhite = whiteKnight;
                     instance = Instantiate(toInstatiateWhite, new Vector3(y, 0, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     toInstatiateBlack = blackKnight;
                     instance = Instantiate(toInstatiateBlack, new Vector3(y, 7, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     break;
-                case 7:                    
+                case 7:
                     toInstatiateWhite = whiteRook;
                     instance = Instantiate(toInstatiateWhite, new Vector3(y, 0, -1f), Quaternion.identity) as GameObject;
                     instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     toInstatiateBlack = blackRook;
                     instance = Instantiate(toInstatiateBlack, new Vector3(y, 7, -1f), Quaternion.identity) as GameObject;
-                    instance.transform.SetParent(piecesHolder);        
+                    instance.transform.SetParent(piecesHolder);
+                    piecesList.Add(instance);
 
                     break;
             }
         }
-        
+
     }
 
     public void SetupScene(){
+
         BoardSetup();
         PiecesSetup();
+
     }
 
+    public int CheckPosition(int x, int y) {
+
+        GameObject obj = this.piecesList.Find(piece => (piece.transform.position.x == x && piece.transform.position.y == y));
+        int result = 0;
+        if (obj != null) {
+            result = obj.GetComponent<ChessMan>().getPlayer();
+        }
+        return result;
+    }
 
 }

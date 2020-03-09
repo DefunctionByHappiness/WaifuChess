@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7493837395925656611}
   - component: {fileID: 2179686208633539406}
+  - component: {fileID: 3792806867965066084}
   m_Layer: 0
   m_Name: WhitePawn
   m_TagString: Player
@@ -81,3 +82,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3792806867965066084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228905888051444429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14a432a349529b94aaaeccc6a41fdd76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 1

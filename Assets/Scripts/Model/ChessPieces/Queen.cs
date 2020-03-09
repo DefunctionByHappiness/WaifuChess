@@ -4,23 +4,39 @@ using UnityEngine;
 
 public class Queen : ChessMan
 {
-    public Queen(int col, int row, int player) : base(col, row, player){
-        
+    public int player;
+    public Queen() {
+
+    }
+
+    /// Awake is called when the script instance is being loaded.
+    void Awake()
+    {
+        base.setPlayer(this.player);
+        int p = base.getPlayer();
+        float y = base.getCol();
+        float x = base.getRow();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        base.setPlayer(player);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public override List<Square> validMovements() {
+
+        // Puedes llamar a esta función para comprobar si en una posición del grid hay algo (devolverá 0 en ese caso) o en caso de haber algo, a qué jugador pertenece (1 o 2, dependiendo del jugador)
+        // int player = base.isEmptySquare(row,col);
+
+        // Puedes comprobar directamente el jugador al que pertece esta ficha llamando a this.player o a base.getPlayer();
+
         List<Square> list = new List<Square>();
         return list;
     }

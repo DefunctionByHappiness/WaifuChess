@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6283588621686546152}
   - component: {fileID: 3383174092312310149}
+  - component: {fileID: -1152890704254215904}
   m_Layer: 0
   m_Name: WhiteRook
   m_TagString: Player
@@ -81,3 +82,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-1152890704254215904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755664211352403974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e3bcc38897f359438a5c78e72867d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 1

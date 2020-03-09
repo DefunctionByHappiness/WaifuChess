@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ChessMan : Piece
 {
-    public ChessMan(int col, int row, int player) : base(col, row, player){
-       
+    public ChessMan() : base(){
+
     }
 /*
     public int getCol(){
@@ -21,21 +21,27 @@ public class ChessMan : Piece
     }
 
 */
-    public override bool moveInsideLimits(int col, int row) {
+    public override bool moveInsideLimits(float col, float row) {
 
-        return true;
+        if((col < 8 && col >= 0) && (row < 8 && row >= 0) ) {
+            return true;
+        }
+        return false;
     }
 
     // Implement in each ChessMan
-    
+
     public override List<Square> validMovements() {
         List<Square> list = new List<Square>();
         return list;
     }
-    
+
     // Check if the square is empty, and returns 0 if empty, 1 if player 1 Chessman or 2 if player 2 Chessman.
-    public int isEmptySquare(int col, int row){
-        return 1;
+    public int isEmptySquare(int row, int col){
+
+        GameObject gc = GameObject.FindGameObjectWithTag("GameController");
+        return gc.GetComponent<BoardManager>().CheckPosition(row, col);
+
     }
 
     protected void visitableSquares() {
@@ -43,7 +49,7 @@ public class ChessMan : Piece
     }
 
         protected void visitableSquare() {
-        
+
     }
 
 }

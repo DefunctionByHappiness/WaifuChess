@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         else if (instance != this)
 
             //Then destroy this. This enforces our singleton pattern, meaning there can only ever be one instance of a GameManager.
-            Destroy(gameObject);    
+            Destroy(gameObject);
 
         //Sets this to not be destroyed when reloading scene
         DontDestroyOnLoad(gameObject);
@@ -29,14 +29,14 @@ public class GameManager : MonoBehaviour
         //Get a component reference to the attached BoardManager script
         boardScript = GetComponent<BoardManager>();
 
-        //Call the InitGame function to initialize the first level 
+        //Call the InitGame function to initialize the first level
         InitGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void GameOver() {
@@ -51,7 +51,9 @@ public class GameManager : MonoBehaviour
         //enemies.Clear();
         //Call the SetupScene function of the BoardManager script, pass it current level number.
         boardScript.SetupScene();
+    }
 
-
+    public int CheckPosition(int x, int y) {
+        return boardScript.CheckPosition(x, y);
     }
 }
