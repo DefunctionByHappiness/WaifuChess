@@ -13,9 +13,6 @@ public class Pawn : ChessMan
     void Awake()
     {
         base.setPlayer(this.player);
-        int p = base.getPlayer();
-        float y = base.getCol();
-        float x = base.getRow();
     }
 
     // Start is called before the first frame update
@@ -27,17 +24,64 @@ public class Pawn : ChessMan
     // Update is called once per frame
     void Update()
     {
-
+        List<Square> movements =  validMovements();
     }
 
     public override List<Square> validMovements() {
 
-        // Puedes llamar a esta función para comprobar si en una posición del grid hay algo (devolverá 0 en ese caso) o en caso de haber algo, a qué jugador pertenece (1 o 2, dependiendo del jugador)
-        // int player = base.isEmptySquare(row,col);
+        List<Square> list = new List<Square>();
 
+        // Puedes llamar a esta función para comprobar si en una posición del grid hay algo (devolverá 0 en ese caso) o en caso de haber algo, a qué jugador pertenece (1 o 2, dependiendo del jugador)
         // Puedes comprobar directamente el jugador al que pertece esta ficha llamando a this.player o a base.getPlayer();
 
-        List<Square> list = new List<Square>();
+        int modifier = 1;
+
+        int actualX = base.getX();
+        int actualY = base.getY();
+
+        List<int[]> slotsAndPlayer = new List<int[]>();
+
+        if (this.player == 2) {
+            modifier *= -1;
+        }
+
+        int auxP = base.isEmptySquare(actualX, actualY + modifier);
+
+        if (auxP == 0) {
+            slotsAndPlayer.Add(new int[] {auxP, actualX, actualY + modifier});
+
+            if (!gameObject.transform.hasChanged) {
+                modifier *= 2;
+                auxP = base.isEmptySquare(actualX, actualY + modifier);
+                if (auxP == 0)
+                {
+                    slotsAndPlayer.Add(new int[] {auxP, actualX, actualY + modifier});
+                }
+                modifier /=2;
+            }
+        }
+
+        auxP = base.isEmptySquare(actualX + 1, actualY + modifier);
+        if (auxP != this.player && auxP != 0){
+            slotsAndPlayer.Add(new int[] {base.isEmptySquare(actualX + 1, actualY + modifier), actualX + 1, actualY + modifier});
+        }
+
+        auxP = base.isEmptySquare(actualX - 1, actualY + modifier);
+        if (auxP != this.player && auxP != 0){
+            slotsAndPlayer.Add(new int[] {base.isEmptySquare(actualX - 1, actualY + modifier), actualX - 1, actualY + modifier});
+        }
+
+        foreach (int[] nums in slotsAndPlayer) {
+
+            if (nums[0] == 0 || nums[0] != this.player) {
+
+                if (base.moveInsideLimits(nums[1], nums[2])){
+                    Square s = new Square(nums[0], nums[1], nums[2]);
+                    list.Add(s);
+                }
+            }
+        }
+
         return list;
     }
 

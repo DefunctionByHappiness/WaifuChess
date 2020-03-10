@@ -21,9 +21,9 @@ public class ChessMan : Piece
     }
 
 */
-    public override bool moveInsideLimits(float col, float row) {
+    public override bool moveInsideLimits(float x, float y) {
 
-        if((col < 8 && col >= 0) && (row < 8 && row >= 0) ) {
+        if((x < 8 && x >= 0) && (y < 8 && y >= 0) ) {
             return true;
         }
         return false;
@@ -37,10 +37,10 @@ public class ChessMan : Piece
     }
 
     // Check if the square is empty, and returns 0 if empty, 1 if player 1 Chessman or 2 if player 2 Chessman.
-    public int isEmptySquare(int row, int col){
+    public int isEmptySquare(int x, int y){
 
         GameObject gc = GameObject.FindGameObjectWithTag("GameController");
-        return gc.GetComponent<BoardManager>().CheckPosition(row, col);
+        return gc.GetComponent<BoardManager>().CheckPosition(x, y);
 
     }
 

@@ -10,12 +10,12 @@ public abstract class Piece : MonoBehaviour
 
     }
 
-    public float getCol(){
-        return gameObject.transform.position.y;
+    public int getY(){
+        return (int) gameObject.transform.position.y;
     }
 
-    public float getRow(){
-        return gameObject.transform.position.x;
+    public int getX(){
+        return (int) gameObject.transform.position.x;
     }
 
     public int getPlayer(){

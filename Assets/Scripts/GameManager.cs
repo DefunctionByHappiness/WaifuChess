@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     private BoardManager boardScript;                        //Store a reference to our BoardManager which will set up the level.
     public static GameManager instance = null;                //Static instance of GameManager which allows it to be accessed by any other script.
 
+    private bool moveActive;
+
     void Awake()
     {
         //Check if instance already exists
@@ -31,11 +33,41 @@ public class GameManager : MonoBehaviour
 
         //Call the InitGame function to initialize the first level
         InitGame();
+
+        moveActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetMouseButtonDown(0)){ // if left button pressed...
+            Collider2D col = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+
+            if (col != null)
+            {
+                ChessMan l;
+                if ((l = col.gameObject.GetComponent(typeof(ChessMan)) as ChessMan) != null) {
+
+                    boardScript.clearSpecialSquares();
+                    moveActive = true;
+
+                    List<Square> s = l.validMovements();
+
+                    foreach (Square square in s)
+                    {
+                        boardScript.createSpecialSquare(square.getX(), square.getY(), square.getPlayer());
+                    }
+                    Debug.Log(col.name);
+                    //Do something...
+                }
+
+            } else {
+                if (moveActive) {
+                    boardScript.clearSpecialSquares();
+                    moveActive = false;
+                }
+            }
+        }
 
     }
 

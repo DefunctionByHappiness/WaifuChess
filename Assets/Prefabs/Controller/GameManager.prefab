@@ -62,6 +62,10 @@ MonoBehaviour:
     type: 3}
   blackTiles: {fileID: 3085470947525344899, guid: 3c5d95769a5387f499d3474971f54a48,
     type: 3}
+  redTiles: {fileID: 1380273893798669536, guid: 111b8a9df34b0e7499629c3de1653a15,
+    type: 3}
+  blueTiles: {fileID: 1517035160301167823, guid: 6982f6f567a838f4f8f481588f5cc867,
+    type: 3}
   whiteRook: {fileID: 755664211352403974, guid: adf257ee021e7194a9920b551da571bd,
     type: 3}
   whiteKnight: {fileID: 1897474442375063123, guid: 9a53c4718ae53cc4b9ae45c92c3746cf,

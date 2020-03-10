@@ -13,9 +13,6 @@ public class Knight : ChessMan
     void Awake()
     {
         base.setPlayer(this.player);
-        int p = base.getPlayer();
-        float y = base.getCol();
-        float x = base.getRow();
     }
 
     // Start is called before the first frame update

@@ -1,16 +1,30 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 
-    public class Square : MonoBehaviour
+    public class Square
     {
-        int col;
-        int row;
+        public int x;
+        public int y;
 
-        public Square(int col, int row) {
-            this.col = col;
-            this.row = row;
+        public int player;
+
+        public Square(int player, int x, int y) {
+            this.x = x;
+            this.y = y;
+            this.player = player;
+        }
+
+        public int getPlayer(){
+            return this.player;
+        }
+
+        public int getX(){
+            return this.x;
+        }
+
+        public int getY(){
+            return this.y;
         }
     }
 
