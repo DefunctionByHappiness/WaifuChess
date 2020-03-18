@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;                //Static instance of GameManager which allows it to be accessed by any other script.
 
     private bool moveActive;
+    private Square selectedPiece;
 
     void Awake()
     {
@@ -43,32 +44,56 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonDown(0)){ // if left button pressed...
             Collider2D col = Physics2D.OverlapPoint(Camera.main.ScreenToWorldPoint(Input.mousePosition));
 
-            if (col != null)
-            {
-                ChessMan l;
-                if ((l = col.gameObject.GetComponent(typeof(ChessMan)) as ChessMan) != null) {
+            if (col != null) {
+                if (string.Equals(col.name.Substring(0,5), "Piece")) {
+                    ChessMan l;
+                    if ((l = col.gameObject.GetComponent(typeof(ChessMan)) as ChessMan) != null) {
 
-                    boardScript.clearSpecialSquares();
-                    moveActive = true;
+                        boardScript.clearSpecialSquares();
+                        moveActive = true;
 
-                    List<Square> s = l.validMovements();
+                        setSelectedPiece(l.getPlayer(), l.getX(), l.getY());
 
-                    foreach (Square square in s)
-                    {
-                        boardScript.createSpecialSquare(square.getX(), square.getY(), square.getPlayer());
+                        List<Square> s = l.validMovements();
+
+                        foreach (Square square in s)
+                        {
+                            boardScript.createSpecialSquare(square.getX(), square.getY(), square.getPlayer());
+                        }
+                        Debug.Log(col.name);
+                        //Do something...
                     }
-                    Debug.Log(col.name);
-                    //Do something...
-                }
 
+                }else if (string.Equals(col.name.Substring(0,8), "BlueTile")) {
+                    Debug.Log("BlueTile");
+                    Square target = new Square(0, (int) col.transform.position.x, (int) col.transform.position.y);
+                    boardScript.movePieces(this.selectedPiece, target);
+                    deactiveMove();
+                } else if (string.Equals(col.name.Substring(0,7), "RedTile")) {
+                    Debug.Log("RedTile");
+                    deactiveMove();
+                }
             } else {
                 if (moveActive) {
-                    boardScript.clearSpecialSquares();
-                    moveActive = false;
+                    deactiveMove();
                 }
             }
         }
 
+    }
+
+    private void deactiveMove(){
+        boardScript.clearSpecialSquares();
+        moveActive = false;
+        unsetSelectedPiece();
+    }
+
+    private void setSelectedPiece(int p, int x, int y){
+        this.selectedPiece = new Square(p, x, y);
+    }
+
+    private void unsetSelectedPiece() {
+        this.selectedPiece = null;
     }
 
     public void GameOver() {

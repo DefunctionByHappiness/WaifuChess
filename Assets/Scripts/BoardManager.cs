@@ -76,6 +76,12 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    public void movePieces(Square from, Square target){
+
+        GameObject obj = this.piecesList.Find(piece => (piece.transform.position.x == from.getX() && piece.transform.position.y == from.getY()));
+        obj.transform.position =  new Vector3(target.getX(), target.getY(), -1f);
+    }
+
     public void createSpecialSquare(int x, int y, int s) {
 
         GameObject toInstantiate;
