@@ -76,6 +76,22 @@ public class BoardManager : MonoBehaviour
         }
     }
 
+    public void movePieces(Square from, Square target){
+
+        GameObject obj = this.piecesList.Find(piece => (piece.transform.position.x == from.getX() && piece.transform.position.y == from.getY()));
+        obj.transform.position =  new Vector3(target.getX(), target.getY(), -1f);
+    }
+
+    public void eatPieces(Square from, Square target){
+
+        GameObject eaten = this.piecesList.Find(piece => (piece.transform.position.x == target.getX() && piece.transform.position.y == target.getY()));
+        this.piecesList.Remove(eaten);
+        Destroy(eaten);
+
+        GameObject obj = this.piecesList.Find(piece => (piece.transform.position.x == from.getX() && piece.transform.position.y == from.getY()));
+        obj.transform.position =  new Vector3(target.getX(), target.getY(), -1f);
+    }
+
     public void createSpecialSquare(int x, int y, int s) {
 
         GameObject toInstantiate;
@@ -84,7 +100,7 @@ public class BoardManager : MonoBehaviour
         } else {
             toInstantiate = redTiles;
         }
-        GameObject instance = Instantiate(toInstantiate, new Vector3(x, y, -0.2f), Quaternion.identity) as GameObject;
+        GameObject instance = Instantiate(toInstantiate, new Vector3(x, y, -1.2f), Quaternion.identity) as GameObject;
         instance.transform.SetParent(specialBoardHolder);
     }
 
