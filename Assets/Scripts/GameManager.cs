@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
                     deactiveMove();
                 } else if (string.Equals(col.name.Substring(0,7), "RedTile")) {
                     Debug.Log("RedTile");
+                    Square target = new Square(0, (int) col.transform.position.x, (int) col.transform.position.y);
+                    boardScript.eatPieces(this.selectedPiece, target);
                     deactiveMove();
                 }
             } else {
