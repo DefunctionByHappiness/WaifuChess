@@ -115,16 +115,19 @@ public class BoardManager : MonoBehaviour
     void PiecesSetup() {
 
         piecesHolder = new GameObject("Pieces").transform;
+        GameObject toInstatiateWhite;
+        GameObject toInstatiateBlack;
+        GameObject instance;
 
         for (int y = 0; y < columns; y++)
         {
-            GameObject toInstatiateWhite = whitePawn;
-            GameObject instance = Instantiate(toInstatiateWhite, new Vector3(y, 1, -1f), Quaternion.identity) as GameObject;
+            toInstatiateWhite = whitePawn;
+            instance = Instantiate(toInstatiateWhite, new Vector3(y, 1, -1f), Quaternion.identity) as GameObject;
             instance.transform.SetParent(piecesHolder);
             instance.name = "Piece_WhitePawn_"+y;
             piecesList.Add(instance);
 
-            GameObject toInstatiateBlack = blackPawn;
+            toInstatiateBlack = blackPawn;
             instance = Instantiate(toInstatiateBlack, new Vector3(y, 6, -1f), Quaternion.identity) as GameObject;
             instance.transform.SetParent(piecesHolder);
             instance.name = "Piece_BlackPawn_"+y;
@@ -252,6 +255,15 @@ public class BoardManager : MonoBehaviour
             o.transform.hasChanged = false;
         }
 
+
+        // DEBUG, borrar después de probar
+        /*
+        toInstatiateBlack = blackBishop;
+        instance = Instantiate(toInstatiateBlack, new Vector3(3, 3, -1f), Quaternion.identity) as GameObject;
+        instance.transform.SetParent(piecesHolder);
+        instance.name = "Piece_BlackBishop_3";
+        piecesList.Add(instance);
+        */
     }
 
     public void SetupScene(){

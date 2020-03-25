@@ -18,13 +18,13 @@ public class Pawn : ChessMan
     // Start is called before the first frame update
     void Start()
     {
-        base.setPlayer(player);
+        //base.setPlayer(player);
     }
 
     // Update is called once per frame
     void Update()
     {
-        List<Square> movements =  validMovements();
+        //List<Square> movements =  validMovements();
     }
 
     public override List<Square> validMovements() {

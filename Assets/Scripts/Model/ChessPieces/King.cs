@@ -29,12 +29,70 @@ public class King : ChessMan
 
     public override List<Square> validMovements() {
 
-        // Puedes llamar a esta función para comprobar si en una posición del grid hay algo (devolverá 0 en ese caso) o en caso de haber algo, a qué jugador pertenece (1 o 2, dependiendo del jugador)
-        // int player = base.isEmptySquare(row,col);
-
-        // Puedes comprobar directamente el jugador al que pertece esta ficha llamando a this.player o a base.getPlayer();
-
         List<Square> list = new List<Square>();
+
+        int actualX = base.getX();
+        int actualY = base.getY();
+
+        int auxP;
+
+        List<int[]> slotsAndPlayer = new List<int[]>();
+
+        // Superior
+        auxP = base.isEmptySquare(actualX, actualY + 1);
+        if (auxP != this.player) {
+            slotsAndPlayer.Add(new int[] {auxP, actualX, actualY + 1});
+        }
+
+        // Superior Derecha
+        auxP = base.isEmptySquare(actualX + 1, actualY + 1);
+        if (auxP != this.player) {
+            slotsAndPlayer.Add(new int[] {auxP, actualX + 1, actualY + 1});
+        }
+
+        // Derecha
+        auxP = base.isEmptySquare(actualX + 1, actualY);
+        if (auxP != this.player) {
+            slotsAndPlayer.Add(new int[] {auxP, actualX + 1, actualY});
+        }
+        // Inferior Derecha
+        auxP = base.isEmptySquare(actualX + 1, actualY - 1);
+        if (auxP != this.player) {
+            slotsAndPlayer.Add(new int[] {auxP, actualX + 1, actualY - 1});
+        }
+
+        // Inferior
+        auxP = base.isEmptySquare(actualX, actualY - 1);
+        if (auxP != this.player) {
+            slotsAndPlayer.Add(new int[] {auxP, actualX, actualY - 1});
+        }
+
+        // Inferior Izquierda
+        auxP = base.isEmptySquare(actualX - 1, actualY - 1);
+        if (auxP != this.player) {
+            slotsAndPlayer.Add(new int[] {auxP, actualX - 1, actualY - 1});
+        }
+
+        // Izquierda
+        auxP = base.isEmptySquare(actualX - 1, actualY);
+        if (auxP != this.player) {
+            slotsAndPlayer.Add(new int[] {auxP, actualX - 1, actualY});
+        }
+
+        // Superior Izquierda
+        auxP = base.isEmptySquare(actualX - 1, actualY + 1);
+        if (auxP != this.player) {
+            slotsAndPlayer.Add(new int[] {auxP, actualX - 1, actualY + 1});
+        }
+
+        foreach (int[] nums in slotsAndPlayer) {
+
+                if (base.moveInsideLimits(nums[1], nums[2])){
+                    Square s = new Square(nums[0], nums[1], nums[2]);
+                    list.Add(s);
+                }
+        }
+
         return list;
     }
 

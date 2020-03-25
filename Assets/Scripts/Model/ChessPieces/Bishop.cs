@@ -29,12 +29,106 @@ public class Bishop : ChessMan
 
     public override List<Square> validMovements() {
 
-        // Puedes llamar a esta función para comprobar si en una posición del grid hay algo (devolverá 0 en ese caso) o en caso de haber algo, a qué jugador pertenece (1 o 2, dependiendo del jugador)
-        // int player = base.isEmptySquare(row,col);
+         List<Square> list = new List<Square>();
 
-        // Puedes comprobar directamente el jugador al que pertece esta ficha llamando a this.player o a base.getPlayer();
+        int actualX = base.getX();
+        int actualY = base.getY();
 
-        List<Square> list = new List<Square>();
+        List<int[]> slotsAndPlayer = new List<int[]>();
+        bool finishedX = false;
+        bool finishedY = false;
+        int x = actualX;
+        int y = actualY;
+
+        // Movimiento superior derecho
+        while (!finishedX) {
+            // DERECHA
+            if (!finishedX && actualX != 7 && actualX != 7) {
+                x++;
+                y++;
+                int auxP = base.isEmptySquare(x, y);
+
+                if (auxP != this.player)  {
+                    slotsAndPlayer.Add(new int[] {auxP, x, y});
+                }
+
+                if (x == 7 || y == 7 || auxP != 0) {
+                    finishedX = true;
+                }
+            } else finishedX = true;
+        }
+        x = actualX;
+        y = actualY;
+        // Movimiento superior izquierdo
+        while (!finishedY) {
+            // DERECHA
+            if (!finishedY && actualX != 0 && actualY != 7) {
+                x--;
+                y++;
+                int auxP = base.isEmptySquare(x, y);
+
+                if (auxP != this.player)  {
+                    slotsAndPlayer.Add(new int[] {auxP, x, y});
+                }
+
+                if (x == 0 || y == 7 || auxP != 0) {
+                    finishedY = true;
+                }
+            } else finishedY = true;
+        }
+
+        finishedX = false;
+        finishedY = false;
+        x = actualX;
+        y = actualY;
+        // Movimiento inferior derecho
+        while (!finishedX) {
+            // DERECHA
+            if (!finishedX && actualX != 7 && actualY != 0) {
+                x++;
+                y--;
+                int auxP = base.isEmptySquare(x, y);
+
+                if (auxP != this.player)  {
+                    slotsAndPlayer.Add(new int[] {auxP, x, y});
+                }
+
+                if (x == 7 || y == 0 || auxP != 0) {
+                    finishedX = true;
+                }
+            } else finishedX = true;
+        }
+        x = actualX;
+        y = actualY;
+        // Movimiento inferior izquierdo
+        while (!finishedY) {
+            // DERECHA
+            if (!finishedY && actualX != 0 && actualY != 0) {
+                x--;
+                y--;
+                int auxP = base.isEmptySquare(x, y);
+
+                if (auxP != this.player)  {
+                    slotsAndPlayer.Add(new int[] {auxP, x, y});
+                }
+
+                if (x == 0 || y == 0 || auxP != 0) {
+                    finishedY = true;
+                }
+            } else finishedY = true;
+        }
+
+        foreach (int[] nums in slotsAndPlayer) {
+
+            //if (nums[0] == 0 || nums[0] != this.player) {
+
+                if (base.moveInsideLimits(nums[1], nums[2])){
+                    Square s = new Square(nums[0], nums[1], nums[2]);
+                    list.Add(s);
+                }
+            //}
+        }
+
         return list;
     }
 
