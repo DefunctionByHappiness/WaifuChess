@@ -153,6 +153,16 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5914911656501935952, guid: c283e9e72e82bce4aa76625ab4aed1de,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 156
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914911656501935952, guid: c283e9e72e82bce4aa76625ab4aed1de,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5914911656662883861, guid: c283e9e72e82bce4aa76625ab4aed1de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -262,6 +272,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MainMenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914911657785957738, guid: c283e9e72e82bce4aa76625ab4aed1de,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -189
+      objectReference: {fileID: 0}
+    - target: {fileID: 5914911657785957738, guid: c283e9e72e82bce4aa76625ab4aed1de,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -146
       objectReference: {fileID: 0}
     - target: {fileID: 5914911658014309419, guid: c283e9e72e82bce4aa76625ab4aed1de,
         type: 3}
